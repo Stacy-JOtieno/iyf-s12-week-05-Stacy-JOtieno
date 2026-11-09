@@ -561,3 +561,58 @@ resetButton.addEventListener("click", () => {
     counterDisplay.textContent = count;
 });
 
+// TASK 10.2: THE EVENT OBJECT
+
+// Exercise 1: Mouse event properties
+document.addEventListener("click", function(event) {
+    console.log("Target:", event.target);
+    console.log("Current Target:", event.currentTarget);
+    console.log("Type:", event.type);
+    console.log("Position:", event.clientX, event.clientY);
+});
+
+// Exercise 2: Keyboard event properties
+document.addEventListener("keydown", function(event) {
+    console.log("Key:", event.key);
+    console.log("Code:", event.code);
+    console.log("Shift:", event.shiftKey);
+    console.log("Ctrl:", event.ctrlKey);
+    console.log("Alt:", event.altKey);
+});
+
+// BUILD: KEYBOARD SHORTCUTS
+
+document.addEventListener("keydown", function(event) {
+
+    // Ctrl + S: Show Saved alert
+    if (event.ctrlKey && event.key.toLowerCase() === "s") {
+        event.preventDefault();
+        alert("Saved!");
+    }
+
+    // Escape: Clear all form inputs
+    if (event.key === "Escape") {
+        const allInputs = document.querySelectorAll(
+            "form input, form textarea"
+        );
+
+        allInputs.forEach(function(input) {
+            input.value = "";
+        });
+
+        console.log("All form inputs cleared!");
+    }
+
+    // Ctrl + Enter: Submit the form
+    if (event.ctrlKey && event.key === "Enter") {
+        event.preventDefault();
+
+        const shortcutForm = document.getElementById("contact-form");
+
+        if (shortcutForm) {
+            shortcutForm.requestSubmit();
+        }
+    }
+
+});
+
