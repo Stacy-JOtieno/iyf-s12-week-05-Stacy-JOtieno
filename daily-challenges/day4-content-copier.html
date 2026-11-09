@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Content Copier</title>
+
+    <style>
+        .box {
+            border: 2px solid blue;
+            padding: 20px;
+            margin: 15px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Content Copier</h1>
+
+    <div id="source" class="box">
+        <h2>Source Content</h2>
+        <p>This is my original content.</p>
+        <p>I am learning JavaScript DOM manipulation.</p>
+    </div>
+
+    <button id="copyButton">Copy Content</button>
+
+    <div id="target" class="box">
+        <h2>Target Content</h2>
+        <p>Copied content will appear here.</p>
+    </div>
+
+    <script>
+        const source = document.getElementById("source");
+        const target = document.getElementById("target");
+        const button = document.getElementById("copyButton");
+
+        button.addEventListener("click", function() {
+
+            target.innerHTML = source.innerHTML;
+
+        });
+        source.addEventListener("dragstart", function(event) {
+    event.dataTransfer.setData("text/plain", source.innerHTML);
+});
+
+target.addEventListener("dragover", function(event) {
+    event.preventDefault();
+});
+
+target.addEventListener("drop", function(event) {
+    event.preventDefault();
+
+    target.innerHTML = event.dataTransfer.getData("text/plain");
+});
+    </script>
+
+</body>
+</html>
