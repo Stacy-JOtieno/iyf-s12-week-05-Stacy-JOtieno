@@ -1,8 +1,9 @@
 # Week {5}: {DOM-MANIPULATION}
 
 ## Author
-- **Name:** Stacy
+- **Name:** Stacy Otieno
 - **GitHub:** [@Stacy-JOtieno](https://github.com/Stacy-JOtieno)
+- **Email:** (jjaqkuxhi@gmail.com)
 - **Date:** November 9, 2026
 
 ## Project Description
