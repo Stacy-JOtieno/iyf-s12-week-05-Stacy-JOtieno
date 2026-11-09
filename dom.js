@@ -349,3 +349,215 @@ function addNavItem(text, href) {
 // Call the function
 addNavItem("Blog", "/blog");
 addNavItem("Portfolio", "/portfolio");
+
+element.addEventListener("event", function() {
+    // Code to execute
+});
+
+
+// ===================================
+// TASK 10.1: EVENT LISTENERS
+// ===================================
+
+// EXERCISE 1: BASIC EVENTS
+
+// Create a button
+const eventButton = document.createElement("button");
+
+eventButton.textContent = "Click Me";
+
+// Add button to webpage
+document.body.appendChild(eventButton);
+
+// Adding event listener using a normal function
+eventButton.addEventListener("click", function() {
+    console.log("Button clicked!");
+});
+
+// Arrow function
+eventButton.addEventListener("click", () => {
+    console.log("Clicked again!");
+});
+
+// Named function
+function handleClick() {
+    console.log("Handled!");
+}
+
+eventButton.addEventListener("click", handleClick);
+
+// Remove named event listener
+eventButton.removeEventListener("click", handleClick);
+
+
+// ===================================
+// TASK 10.1: EVENT LISTENERS
+// ===================================
+
+// EXERCISE 1: BASIC EVENTS
+
+// Create a button
+const eventButton = document.createElement("button");
+
+eventButton.textContent = "Click Me";
+
+// Add button to webpage
+document.body.appendChild(eventButton);
+
+// Adding event listener using a normal function
+eventButton.addEventListener("click", function() {
+    console.log("Button clicked!");
+});
+
+// Arrow function
+eventButton.addEventListener("click", () => {
+    console.log("Clicked again!");
+});
+
+// Named function
+function handleClick() {
+    console.log("Handled!");
+}
+
+eventButton.addEventListener("click", handleClick);
+
+// Remove named event listener
+eventButton.removeEventListener("click", handleClick);
+
+
+// EXERCISE 2: EVENT TYPES
+
+// MOUSE EVENTS
+eventButton.addEventListener("dblclick", () => {
+    console.log("Button double-clicked!");
+});
+
+eventButton.addEventListener("mouseenter", () => {
+    console.log("Mouse entered the button!");
+});
+
+eventButton.addEventListener("mouseleave", () => {
+    console.log("Mouse left the button!");
+});
+
+eventButton.addEventListener("mousemove", () => {
+    console.log("Mouse moving over button!");
+});
+
+
+// KEYBOARD EVENTS
+const eventInput = document.querySelector("#name");
+
+eventInput.addEventListener("keydown", (event) => {
+    console.log("Key pressed:", event.key);
+});
+
+eventInput.addEventListener("keyup", (event) => {
+    console.log("Key released:", event.key);
+});
+
+
+// FORM EVENTS
+const eventForm = document.querySelector("#contact-form");
+
+eventForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.log("Form submitted!");
+});
+
+eventInput.addEventListener("focus", () => {
+    console.log("Input is focused!");
+});
+
+eventInput.addEventListener("blur", () => {
+    console.log("Input lost focus!");
+});
+
+eventInput.addEventListener("input", () => {
+    console.log("Current input:", eventInput.value);
+});
+
+eventInput.addEventListener("change", () => {
+    console.log("Input value changed:", eventInput.value);
+});
+
+
+// WINDOW EVENTS
+window.addEventListener("resize", () => {
+    console.log("Window resized!");
+});
+
+window.addEventListener("scroll", () => {
+    console.log("Page scrolled!");
+});
+
+
+// ===================================
+// BUILD: CLICK COUNTER
+// ===================================
+
+// Create counter container
+const counterContainer = document.createElement("div");
+
+counterContainer.className = "counter-container";
+
+// Create heading
+const counterHeading = document.createElement("h2");
+
+counterHeading.textContent = "My Click Counter";
+
+// Create count display
+const counterDisplay = document.createElement("h1");
+
+counterDisplay.textContent = "0";
+
+// Create increase button
+const increaseButton = document.createElement("button");
+
+increaseButton.textContent = "+";
+
+// Create decrease button
+const decreaseButton = document.createElement("button");
+
+decreaseButton.textContent = "-";
+
+// Create reset button
+const resetButton = document.createElement("button");
+
+resetButton.textContent = "Reset";
+
+// Add everything to the container
+counterContainer.appendChild(counterHeading);
+counterContainer.appendChild(counterDisplay);
+counterContainer.appendChild(increaseButton);
+counterContainer.appendChild(decreaseButton);
+counterContainer.appendChild(resetButton);
+
+// Add container to webpage
+document.body.appendChild(counterContainer);
+
+
+// Counter variable
+let count = 0;
+
+// Increase count
+increaseButton.addEventListener("click", () => {
+    count++;
+    counterDisplay.textContent = count;
+});
+
+// Decrease count
+decreaseButton.addEventListener("click", () => {
+    if (count > 0) {
+        count--;
+    }
+
+    counterDisplay.textContent = count;
+});
+
+// Reset count
+resetButton.addEventListener("click", () => {
+    count = 0;
+    counterDisplay.textContent = count;
+});
+
