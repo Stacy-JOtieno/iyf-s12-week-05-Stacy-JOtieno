@@ -123,3 +123,102 @@ const body = footer.parentElement;
 
 console.log("5. Footer:", footer);
 console.log("5. Body:", body);
+
+
+// ===================================
+// TASK 9.3: MODIFYING CONTENT
+// ===================================
+
+// EXERCISE 1: TEXT CONTENT
+
+// Select the h1 element
+const titleHeading = document.querySelector("h1");
+
+// Read text
+console.log("Text Content:", titleHeading.textContent);
+console.log("Inner Text:", titleHeading.innerText);
+
+// Modify text
+titleHeading.textContent = "Welcome to My DOM Practice";
+
+console.log("Updated heading:", titleHeading.textContent);
+
+
+// EXERCISE 2: HTML CONTENT
+
+// Select the article
+const articleContent = document.querySelector("article");
+
+// Read HTML
+console.log("Original HTML:", articleContent.innerHTML);
+
+// Modify HTML
+articleContent.innerHTML = `
+    <h2>Updated Article</h2>
+    <p>This is new content.</p>
+    <p>I am learning JavaScript DOM manipulation.</p>
+`;
+
+console.log("Updated HTML:", articleContent.innerHTML);
+
+// Demonstrate safe handling of user input
+const userInput = `<img src="x" onerror="alert('hacked!')">`;
+
+// SAFE: displays the characters as text
+articleContent.textContent = userInput;
+
+console.log("User input displayed safely:", articleContent.textContent);
+
+
+// EXERCISE 3: ATTRIBUTES
+
+// Select the first navigation link
+const attributeLink = document.querySelector(".nav-link");
+
+// Get attribute
+console.log("Original href:", attributeLink.getAttribute("href"));
+console.log("Href property:", attributeLink.href);
+
+// Set attribute
+attributeLink.setAttribute(
+    "href",
+    "https://developer.mozilla.org"
+);
+
+// Check attribute
+console.log("Has target:", attributeLink.hasAttribute("target"));
+
+// Remove attribute
+attributeLink.removeAttribute("target");
+
+// DATA ATTRIBUTES
+
+const dataElement = document.querySelector("[data-id]");
+
+console.log("Data ID:", dataElement.dataset.id);
+console.log("Data Category:", dataElement.dataset.category);
+
+// Create a new data attribute
+dataElement.dataset.newAttr = "value";
+
+console.log("New data attribute:", dataElement.dataset.newAttr);
+
+
+// EXERCISE 4: STYLES
+
+// Select the container
+const container = document.querySelector(".container");
+
+// Apply inline styles
+container.style.backgroundColor = "#f0f0f0";
+container.style.padding = "30px";
+container.style.borderRadius = "8px";
+
+// Apply multiple styles
+Object.assign(container.style, {
+    backgroundColor: "#333",
+    color: "white",
+    padding: "20px"
+});
+
+console.log("Container styles updated:", container);
