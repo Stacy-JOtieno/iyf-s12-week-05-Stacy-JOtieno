@@ -50,3 +50,78 @@ console.log("First navigation link:", firstNavLink);
 // 7. Select the last paragraph
 const lastParagraph = paragraphs[paragraphs.length - 1];
 console.log("Last paragraph:", lastParagraph);
+
+
+// ===================================
+// TASK 9.2: TRAVERSING THE DOM
+// ===================================
+
+// DOM Navigation
+
+const nav = document.querySelector("nav");
+
+// Parent
+console.log("Parent:", nav.parentElement);
+
+// Children
+console.log("Children:", nav.children);
+console.log("First child:", nav.firstElementChild);
+console.log("Last child:", nav.lastElementChild);
+
+// Siblings
+const article = document.querySelector("article");
+
+console.log("Next sibling:", article.nextElementSibling);
+console.log("Previous sibling:", article.previousElementSibling);
+
+// Descendants
+const navLinks = nav.querySelectorAll("a");
+
+console.log("All navigation links:", navLinks);
+
+
+// ===================================
+// PRACTICE TASKS
+// ===================================
+
+// 1. Select the header, then navigate to the nav inside it
+const header = document.querySelector("header");
+const headerNav = header.querySelector("nav");
+
+console.log("1. Navigation inside header:", headerNav);
+
+
+// 2. Select the first nav-link, then get its parent li
+const firstLink = document.querySelector(".nav-link");
+const parentLi = firstLink.parentElement;
+
+console.log("2. Parent list item:", parentLi);
+
+
+// 3. Select the article, then get its next sibling (section)
+const myArticle = document.querySelector("article");
+const nextSection = myArticle.nextElementSibling;
+
+console.log("3. Next sibling:", nextSection);
+
+
+// 4. Select the ul, then get all its child li elements
+const navList = document.querySelector(".nav-list");
+const listItems = navList.children;
+
+console.log("4. Navigation list items:", listItems);
+
+
+// 5. Start from the footer and navigate up to the body
+const footer = document.querySelector("footer");
+const footerParent = footer.parentElement;
+const body = footerParent.parentElement;
+
+console.log("5. Footer:", footer);
+console.log("5. Footer parent:", footerParent);
+console.log("5. Body:", body);
+
+const footer = document.querySelector("footer");
+const body = footer.parentElement;
+
+console.log("5. Body:", body);
