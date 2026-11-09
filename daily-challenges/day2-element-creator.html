@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Element Creator</title>
+</head>
+<body>
+
+    <h1>My Dynamic Paragraphs</h1>
+
+    <button id="addButton">Add Paragraph</button>
+
+    <div id="container"></div>
+
+    <script>
+        const addButton = document.getElementById("addButton");
+        const container = document.getElementById("container");
+
+        let count = 0;
+
+        addButton.addEventListener("click", function() {
+
+            count++;
+
+            // Create a paragraph
+            const paragraph = document.createElement("p");
+
+            paragraph.textContent = "Paragraph " + count;
+
+            // Create a delete button
+            const deleteButton = document.createElement("button");
+
+            deleteButton.textContent = "Delete";
+
+            // Delete the paragraph when clicked
+            deleteButton.addEventListener("click", function() {
+                paragraph.remove();
+            });
+
+            // Add paragraph and button to the page
+            container.appendChild(paragraph);
+            paragraph.appendChild(deleteButton);
+
+        });
+    </script>
+
+</body>
+</html>
