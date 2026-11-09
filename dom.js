@@ -222,3 +222,130 @@ Object.assign(container.style, {
 });
 
 console.log("Container styles updated:", container);
+
+// Restore the original article structure
+article.innerHTML = `
+    <h2 class="title">Article Title</h2>
+    <p class="content">This is the first paragraph.</p>
+    <p class="content">This is the second paragraph.</p>
+`;
+
+// ===================================
+// TASK 9.4: ADDING & REMOVING ELEMENTS
+// ===================================
+
+// EXERCISE 1: CREATING ELEMENTS
+
+// Create a new paragraph
+const newParagraph = document.createElement("p");
+
+newParagraph.textContent = "This is a new paragraph!";
+newParagraph.className = "content highlight";
+
+// Select the article
+// Reuse the article variable from Task 9.2
+
+// Add to the end of the article
+article.appendChild(newParagraph);
+
+console.log("New paragraph added:", newParagraph);
+
+
+// Insert before the first paragraph
+const firstParagraph = article.querySelector("p");
+
+const anotherParagraph = document.createElement("p");
+anotherParagraph.textContent = "This paragraph was inserted before the first paragraph.";
+
+article.insertBefore(anotherParagraph, firstParagraph);
+
+console.log("Paragraph inserted before:", anotherParagraph);
+
+
+// Modern insertion methods
+
+const prependParagraph = document.createElement("p");
+prependParagraph.textContent = "This paragraph was added at the beginning.";
+article.prepend(prependParagraph);
+
+const appendParagraph = document.createElement("p");
+appendParagraph.textContent = "This paragraph was added at the end.";
+article.append(appendParagraph);
+
+const beforeParagraph = document.createElement("p");
+beforeParagraph.textContent = "This paragraph is before the first paragraph.";
+firstParagraph.before(beforeParagraph);
+
+const afterParagraph = document.createElement("p");
+afterParagraph.textContent = "This paragraph is after the first paragraph.";
+firstParagraph.after(afterParagraph);
+
+
+// EXERCISE 2: REMOVING ELEMENTS
+
+// Remove the footer
+const footerElement = document.querySelector("footer");
+
+footerElement.remove();
+
+console.log("Footer removed");
+
+
+// Remove the last navigation item (Contact)
+const lastNavItem = nav.querySelector("li:last-child");
+
+lastNavItem.parentElement.removeChild(lastNavItem);
+
+console.log("Last navigation item removed");
+
+
+// EXERCISE 3: CLONING ELEMENTS
+
+// Select the first navigation item
+const originalNavItem = document.querySelector(".nav-link").parentElement;
+
+// Clone the navigation item
+const clonedNavItem = originalNavItem.cloneNode(true);
+
+// Change the text of the cloned link
+clonedNavItem.querySelector("a").textContent = "New Link";
+
+// Add the cloned item to the navigation list
+document.querySelector(".nav-list").appendChild(clonedNavItem);
+
+console.log("Cloned navigation item:", clonedNavItem);
+
+
+// ===================================
+// BUILD: DYNAMIC NAVIGATION ITEMS
+// ===================================
+
+function addNavItem(text, href) {
+
+    // Create a new list item
+    const newItem = document.createElement("li");
+
+    // Create a new link
+    const newLink = document.createElement("a");
+
+    // Add the link text
+    newLink.textContent = text;
+
+    // Set the link destination
+    newLink.href = href;
+
+    // Give the link a class
+    newLink.className = "nav-link";
+
+    // Put the link inside the list item
+    newItem.appendChild(newLink);
+
+    // Add the list item to the navigation
+    document.querySelector(".nav-list").appendChild(newItem);
+
+    console.log("New navigation item added:", newItem);
+}
+
+// Call the function
+addNavItem("Blog", "/blog");
+addNavItem("Portfolio", "/portfolio");
