@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Changer</title>
+</head>
+<body>
+
+    <h1>Welcome to JavaScript</h1>
+    <h2>Learning DOM Manipulation</h2>
+    <h3>Daily Challenge One</h3>
+
+    <button id="colorButton">Change Colors</button>
+
+    <script>
+        const button = document.getElementById("colorButton");
+
+        button.addEventListener("click", function() {
+
+            // Generate a random hex color
+            const randomColor = "#" + Math.floor(
+                Math.random() * 16777215
+            ).toString(16).padStart(6, "0");
+
+            // Select all headings
+            const headings = document.querySelectorAll("h1, h2, h3");
+
+            // Apply the random color
+            headings.forEach(function(heading) {
+                heading.style.color = randomColor;
+            });
+
+        });
+    </script>
+
+</body>
+</html>
