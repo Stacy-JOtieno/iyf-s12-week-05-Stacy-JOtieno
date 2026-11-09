@@ -350,45 +350,6 @@ function addNavItem(text, href) {
 addNavItem("Blog", "/blog");
 addNavItem("Portfolio", "/portfolio");
 
-element.addEventListener("event", function() {
-    // Code to execute
-});
-
-
-// ===================================
-// TASK 10.1: EVENT LISTENERS
-// ===================================
-
-// EXERCISE 1: BASIC EVENTS
-
-// Create a button
-const eventButton = document.createElement("button");
-
-eventButton.textContent = "Click Me";
-
-// Add button to webpage
-document.body.appendChild(eventButton);
-
-// Adding event listener using a normal function
-eventButton.addEventListener("click", function() {
-    console.log("Button clicked!");
-});
-
-// Arrow function
-eventButton.addEventListener("click", () => {
-    console.log("Clicked again!");
-});
-
-// Named function
-function handleClick() {
-    console.log("Handled!");
-}
-
-eventButton.addEventListener("click", handleClick);
-
-// Remove named event listener
-eventButton.removeEventListener("click", handleClick);
-
 
 // ===================================
 // TASK 10.1: EVENT LISTENERS
@@ -616,3 +577,92 @@ document.addEventListener("keydown", function(event) {
 
 });
 
+
+// EXERCISE 1: UNDERSTANDING EVENT BUBBLING
+
+document.getElementById("grandparent").addEventListener("click", () => {
+    console.log("Grandparent clicked");
+});
+
+document.getElementById("parent").addEventListener("click", () => {
+    console.log("Parent clicked");
+});
+
+document.getElementById("child").addEventListener("click", () => {
+    console.log("Child clicked");
+});
+
+// ========================================
+// TASK 10.3: EVENT BUBBLING & DELEGATION
+// ========================================
+
+// Select the task elements
+const taskForm = document.getElementById("taskForm");
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+
+// ONE CLICK EVENT LISTENER ON THE PARENT UL
+taskList.addEventListener("click", function(event) {
+
+    // Find the nearest li
+    const task = event.target.closest("li");
+
+    // Check whether a task was clicked
+    if (!task || !taskList.contains(task)) {
+        return;
+    }
+
+    // Check whether the delete button was clicked
+    const deleteButton = event.target.closest(".delete-btn");
+
+    if (deleteButton && task.contains(deleteButton)) {
+        task.remove();
+        console.log("Task deleted!");
+        return;
+    }
+
+    // Toggle completed class
+    task.classList.toggle("completed");
+
+    console.log("Task completion toggled!");
+});
+
+
+// ADD NEW TASKS
+taskForm.addEventListener("submit", function(event) {
+
+    // Prevent page refresh
+    event.preventDefault();
+
+    // Get user input
+    const taskText = taskInput.value.trim();
+
+    if (taskText === "") {
+        return;
+    }
+
+    // Create new li
+    const newTask = document.createElement("li");
+
+    // Create span
+    const span = document.createElement("span");
+    span.textContent = taskText;
+
+    // Create delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.type = "button";
+    deleteButton.classList.add("delete-btn");
+
+    // Append elements
+    newTask.appendChild(span);
+    newTask.appendChild(deleteButton);
+
+    // Add task to ul
+    taskList.appendChild(newTask);
+
+    // Clear input
+    taskInput.value = "";
+
+    console.log("New task added!");
+});

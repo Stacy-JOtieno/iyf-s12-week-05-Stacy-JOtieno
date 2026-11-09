@@ -45,7 +45,20 @@
 .counter-container button:hover {
     background-color: #0b1e39;
 }
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: gray;
+}
 
+#taskList li {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.delete-btn {
+    margin-left: 15px;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -78,7 +91,55 @@
                 <button type="submit">Submit</button>
             </form>
         </section>
+        
+<!-- Task 10.3: Event Bubbling and Delegation -->
+
+<h2>Task 10.3: Delegated Task List</h2>
+
+<form id="taskForm">
+    <input
+        type="text"
+        id="taskInput"
+        placeholder="Enter a task"
+        required
+    >
+    <button type="submit">Add Task</button>
+</form>
+
+<ul id="taskList">
+    <li>
+        <span>Learn JavaScript</span>
+        <button type="button" class="delete-btn">Delete</button>
+    </li>
+
+    <li>
+        <span>Practice DOM manipulation</span>
+        <button type="button" class="delete-btn">Delete</button>
+    </li>
+
+    <li>
+        <span>Complete Task 10.3</span>
+        <button type="button" class="delete-btn">Delete</button>
+    </li>
+</ul>
+
     </main>
+
+<!-- TASK 10.3: EXERCISE 1 - EVENT BUBBLING -->
+
+<h2>Exercise 1: Understanding Event Bubbling</h2>
+
+<div id="grandparent" style="padding: 30px; background: lightblue;">
+    Grandparent
+
+    <div id="parent" style="padding: 30px; background: lightgreen;">
+        Parent
+
+        <div id="child" style="padding: 30px; background: lightcoral;">
+            Child
+        </div>
+    </div>
+</div>
 
     <footer>
         <p>&copy; 2026</p>
