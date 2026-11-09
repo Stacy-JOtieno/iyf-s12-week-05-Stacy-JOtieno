@@ -1,5 +1,10 @@
 //Tasks 9.x and 10.x practice code//
 
+
+// ===================================
+// TASK 9.1: SELECTING ELEMENTS
+// ===================================
+
 // 1. getElementById
 const header = document.getElementById("main-header");
 console.log("getElementById:", header);
@@ -85,22 +90,22 @@ console.log("All navigation links:", navLinks);
 // ===================================
 
 // 1. Select the header, then navigate to the nav inside it
-const header = document.querySelector("header");
+// Reuse the existing header variable
 const headerNav = header.querySelector("nav");
 
 console.log("1. Navigation inside header:", headerNav);
 
 
 // 2. Select the first nav-link, then get its parent li
-const firstLink = document.querySelector(".nav-link");
+// Reuse the existing firstLink variable
 const parentLi = firstLink.parentElement;
 
 console.log("2. Parent list item:", parentLi);
 
 
 // 3. Select the article, then get its next sibling (section)
-const myArticle = document.querySelector("article");
-const nextSection = myArticle.nextElementSibling;
+// Reuse the existing article variable
+const nextSection = article.nextElementSibling;
 
 console.log("3. Next sibling:", nextSection);
 
@@ -114,14 +119,7 @@ console.log("4. Navigation list items:", listItems);
 
 // 5. Start from the footer and navigate up to the body
 const footer = document.querySelector("footer");
-const footerParent = footer.parentElement;
-const body = footerParent.parentElement;
-
-console.log("5. Footer:", footer);
-console.log("5. Footer parent:", footerParent);
-console.log("5. Body:", body);
-
-const footer = document.querySelector("footer");
 const body = footer.parentElement;
 
+console.log("5. Footer:", footer);
 console.log("5. Body:", body);
