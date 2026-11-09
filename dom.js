@@ -666,3 +666,154 @@ taskForm.addEventListener("submit", function(event) {
 
     console.log("New task added!");
 });
+
+
+// ========================================
+// TASK 10.4: FORM HANDLING
+// ========================================
+
+// Reuse the existing form and email variables from Task 9.1
+const nameInput = document.getElementById("name");
+const successMessage = document.getElementById("form-success");
+
+// EXERCISE 1: REAL-TIME NAME VALIDATION
+
+nameInput.addEventListener("input", function(event) {
+
+    const value = event.target.value.trim();
+
+    if (value.length < 2) {
+        showError(nameInput, "Name must be at least 2 characters");
+    } else {
+        clearError(nameInput);
+    }
+});
+
+
+// REAL-TIME EMAIL VALIDATION
+
+email.addEventListener("input", function(event) {
+
+    const value = event.target.value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(value)) {
+        showError(email, "Please enter a valid email");
+    } else {
+        clearError(email);
+    }
+});
+
+
+// EXERCISE 2: FORM SUBMISSION
+
+form.addEventListener("submit", function(event) {
+
+    // Stop the page from refreshing
+    event.preventDefault();
+
+    // Get all form data
+    const formData = new FormData(form);
+
+    const data = Object.fromEntries(formData);
+
+    console.log("Form data:", data);
+
+    // Validate all fields
+    if (isValid(data)) {
+
+        showSuccess("Form submitted successfully!");
+
+        // Clear the form
+        form.reset();
+
+        // Remove previous error messages
+        clearError(nameInput);
+        clearError(email);
+    }
+
+});
+
+
+// FUNCTION: SHOW ERROR
+
+function showError(input, message) {
+
+    // Add error class
+    input.classList.add("error");
+
+    // Find existing error message
+    let errorMessage = input.parentElement.querySelector(".error-message");
+
+    // Create error message if it doesn't exist
+    if (!errorMessage) {
+        errorMessage = document.createElement("p");
+        errorMessage.className = "error-message";
+        input.insertAdjacentElement("afterend", errorMessage);
+    }
+
+    // Update error text
+    errorMessage.textContent = message;
+}
+
+
+// FUNCTION: CLEAR ERROR
+
+function clearError(input) {
+
+    // Remove error styling
+    input.classList.remove("error");
+
+    // Remove error message
+    const errorMessage = input.parentElement.querySelector(".error-message");
+
+    if (errorMessage) {
+        errorMessage.remove();
+    }
+}
+
+
+// FUNCTION: VALIDATE ALL FIELDS
+
+function isValid(data) {
+
+    let valid = true;
+
+    // Validate name
+    if (data.name.trim().length < 2) {
+
+        showError(nameInput, "Name must be at least 2 characters");
+
+        valid = false;
+
+    } else {
+
+        clearError(nameInput);
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(data.email.trim())) {
+
+        showError(email, "Please enter a valid email");
+
+        valid = false;
+
+    } else {
+
+        clearError(email);
+    }
+
+    return valid;
+}
+
+
+// FUNCTION: SHOW SUCCESS
+
+function showSuccess(message) {
+
+    successMessage.textContent = message;
+
+}
